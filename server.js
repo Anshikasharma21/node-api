@@ -14,8 +14,12 @@ const MONGO_URL = process.env.MONGO_URL;
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: [
+    "http://localhost:5173",
+    "https://react-crud-frontend-sooty.vercel.app"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
 
 app.use(express.json());
