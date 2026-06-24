@@ -16,7 +16,8 @@ const MONGO_URL = process.env.MONGO_URL;
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://react-crud-frontend-sooty.vercel.app"
+    "https://react-crud-anshika.vercel.app",
+    "https://react-crud-anshika-pop25rkxp-anshika-sharmas-projects-c5827442.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
@@ -38,14 +39,12 @@ app.use(errorMiddleware);
 
 // MongoDB Connection
 mongoose.connect(MONGO_URL)
-.then(() => {
-  console.log('MongoDB Connected');
-
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  .then(() => {
+    console.log('MongoDB Connected');
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
   });
-
-})
-.catch((error) => {
-  console.log(error);
-});
